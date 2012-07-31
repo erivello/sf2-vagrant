@@ -51,13 +51,6 @@ class package_app_server
 
   package
   {
-    'php5-intl':
-      ensure  => present,
-      require => Package['php5']
-  }
-
-  package
-  {
     'php-apc':
       ensure  => present,
       require => Package['php5']
