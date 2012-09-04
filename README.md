@@ -23,9 +23,20 @@ This example uses the default Ubuntu image from the Vagrant project, although yo
 
 ## Setup a working directory and start your new environment
 
-    $ git clone git://github.com/meandmymonkey/sf2-vagrant.git mydir
+    $ git clone git://github.com/erivello/sf2-vagrant.git mydir/vagrant
     $ cd mydir
+    $ cd vagrant
     $ vagrant up
+
+## Vagrant up fails
+
+Run this in your command line:
+
+    $ VBoxManage list vms | grep cat .vagrant | cut -d\" -f 6 | cut -d\" -f2
+
+this returns a string (like sf2-vagrant_1343247736) to be used in the next command line:
+
+    $ VBoxManage guestcontrol sf2-vagrant_1343247736 exec "/usr/bin/sudo" --username vagrant --password vagrant --verbose dhclient
 
 Depending on the versions of the box and your VirtualBox installation, you might see a notice that the guest additions of the box do not match the version of VirtualBox you are using. If you encounter any problems, you might want to install up to date guest additions on your box once running and [repackage it for use with Vagrant](http://vagrantup.com/docs/getting-started/packaging.html).
 
@@ -35,9 +46,9 @@ If you prefer a clean URL, you might want to map `33.33.33.100` to a local domai
 
 ### Webserver
 
-Vagrant will create two additional directories:
+Vagrant will create one additional directory:
 
-`mydir/log/apache2` for Apache logs and `mydir/project` for your actual project files
+`mydir/vagrant/log/apache2` for Apache logs.
 
 Drop your Symfony 2 app into the `mydir/project` directory. Apache will use `mydir/project/web` as the web root.
 
@@ -55,14 +66,14 @@ Connect to your virtual machine:
 
 Change to your project directory and launch the Symfony shell:
 
-    vagrant@vagrantup:~$ cd /vagrant/project
+    vagrant@vagrantup:~$ cd /project
     vagrant@vagrantup:~$ ./app/console -s
 
 ## Notes
 
-Vagrant will run on Windows without problems, although this is not tested with this specific configuration. As Windows does not offer NFS, you will however need to comment out the corresponding line in `mydir/Vagrantfile`.
+Vagrant will run on Windows without problems, although this is not tested with this specific configuration. As Windows does not offer NFS, you will however need to comment out the corresponding line in `mydir/vagrant/Vagrantfile`.
 
-If you want to use multiple instances of this virtual machine at the same time on a single host, you will need to edit the IP set in `mydir/Vagrantfile` to avoid conflicts.
+If you want to use multiple instances of this virtual machine at the same time on a single host, you will need to edit the IP set in `mydir/vagrant/Vagrantfile` to avoid conflicts.
 
 
 
