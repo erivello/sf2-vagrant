@@ -45,9 +45,9 @@ Depending on the versions of the box and your VirtualBox installation, you might
 
 ### Webserver
 
-Vagrant will create one additional directory:
+Vagrant will create two additional directories:
 
-`mydir/vagrant/log/apache2` for Apache logs.
+`mydir/vagrant/log/apache2` for Apache logs and `mydir/project`.
 
 Drop your Symfony 2 app into the `mydir/project` directory. Apache will use `mydir/project/web` as the web root.
 
