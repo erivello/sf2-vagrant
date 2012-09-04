@@ -62,13 +62,6 @@ class config_app_server
 
   file 
   {
-    'project.basedir':
-      path    => '/vagrant/project',
-      ensure  => directory
-  }
-
-  file 
-  {
     'system.logdir':
       path    => '/vagrant/log',
       ensure  => directory
