@@ -34,13 +34,12 @@ Run this in your command line:
 
     $ VBoxManage list vms | grep cat .vagrant | cut -d\" -f 6 | cut -d\" -f2
 
-this returns a string (like sf2-vagrant_1343247736) to be used in the next command line:
+this returns a string (like `sf2-vagrant_1343247736`) to be used in the next command line:
 
     $ VBoxManage guestcontrol sf2-vagrant_1343247736 exec "/usr/bin/sudo" --username vagrant --password vagrant --verbose dhclient
 
 Depending on the versions of the box and your VirtualBox installation, you might see a notice that the guest additions of the box do not match the version of VirtualBox you are using. If you encounter any problems, you might want to install up to date guest additions on your box once running and [repackage it for use with Vagrant](http://vagrantup.com/docs/getting-started/packaging.html).
 
-If you prefer a clean URL, you might want to map `33.33.33.100` to a local domain of your choice in your hosts file. This is entirely optional.
 
 ## Use it
 
@@ -53,6 +52,8 @@ Vagrant will create one additional directory:
 Drop your Symfony 2 app into the `mydir/project` directory. Apache will use `mydir/project/web` as the web root.
 
 The app is now accessible from your host system at [http://33.33.33.100](http://33.33.33.100).
+
+If you prefer a clean URL, you might want to map `33.33.33.100` to a local domain of your choice in your hosts file. This is entirely optional.
 
 ### MySQL
 
