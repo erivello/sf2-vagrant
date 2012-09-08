@@ -1,13 +1,13 @@
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
 
-        DocumentRoot /vagrant/project/web
+        DocumentRoot /project/web
         <Directory />
                 Options FollowSymLinks
                 AllowOverride All
         </Directory>
 
-        <Directory /vagrant/project/web>
+        <Directory /project/web>
                 Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
                 Order allow,deny
